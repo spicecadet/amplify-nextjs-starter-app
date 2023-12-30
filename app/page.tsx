@@ -1,85 +1,40 @@
+'use client';
+
 import Image from 'next/image'
 import styles from './page.module.css'
+import { useState } from 'react';
+import Counter from './counter';
 
 export default function Home() {
+  const [peeCount, setPeeCount] = useState(0);
+  const [cakeCount, setCakeCount] = useState(0);
+  const [cowCount, setCowCount] = useState(0);
+
   return (
     <main className={styles.main}>
+      <h1>The India 2023-2024 Counter App</h1>
       <div className={styles.description}>
-        <p>
-          Let's get started by editing and building&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <span>+</span>
-        <Image
-          src="/amplify.svg"
-          alt="Amplify Logo"
-          width={45}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://docs.amplify.aws/gen2/"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Review documentation for Amplify's code-first DX (Gen 2).</p>
-        </a>
-
-        <a
-          href="https://docs.amplify.aws/gen2/start/quickstart/"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Quickstart <span>-&gt;</span>
-          </h2>
-          <p>Follow a tutorial to build a fullstack app with Amplify Gen 2.</p>
-        </a>
-
-        <a
-          href="https://docs.amplify.aws/gen2/build-a-backend/auth/set-up-auth/"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Auth <span>-&gt;</span>
-          </h2>
-          <p>Zero-config Auth UI components with social sign-in and MFA.</p>
-        </a>
-
-        <a
-          href="https://docs.amplify.aws/gen2/build-a-backend/data/set-up-data/"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Data <span>-&gt;</span>
-          </h2>
-          <p>
-            Fully-typed real-time API with NoSQL database.
-          </p>
-        </a>
+      <Counter 
+        counter={peeCount} 
+        setCounter={setPeeCount} 
+        header={"The Pee Counter"} 
+        message={"Let's count how many people we see peeing on the side of the road in India"}
+        btnMessage={"I saw another"} 
+      />
+      <Counter 
+        counter={cakeCount}
+        setCounter={setCakeCount}
+        header={"Cake Counter"}
+        message={"Let's count how many cakes are delivered for Sophie & Ed's Anniversary"}
+        btnMessage={"Cakes Delivered"}
+      />
+      <Counter
+        counter={cowCount}
+        setCounter={setCowCount}
+        header={"Cow Counter"}
+        message={"Let's count how many cows we see on the road. Bonus pionts if they are eating garbage"}
+        btnMessage={"Cows Spotted"}
+      />
       </div>
     </main>
   )
